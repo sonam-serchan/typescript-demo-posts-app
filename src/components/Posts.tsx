@@ -1,24 +1,10 @@
-import { useEffect, useState } from "react";
 import PostCard from "./PostCard";
 import PostForm from "./PostForm";
-import { fetchPosts } from "../helpers/fetchPosts";
-import { Post } from "../types/post";
+import useFetchPosts from "../hooks/useFetchPosts";
 
 export default function Posts() {
-  // type annotation for posts state using angle bracket (<>) in useState hook
-  const [posts, setPosts] = useState<Post[]>();
-
-  useEffect(() => {
-    setTimeout(() => {
-      async function getPosts() {
-        // data is inferred here as array of Post because of the return type specified in the fetchPosts function
-        const data = await fetchPosts();
-        setPosts(data);
-      }
-
-      getPosts();
-    }, 1000);
-  }, []);
+  // custom hook to get data
+  const { posts } = useFetchPosts();
 
   if (!posts?.length) {
     return <p>Posts are loading...</p>;

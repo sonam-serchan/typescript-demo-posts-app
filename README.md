@@ -17,6 +17,10 @@ Types
 
 - post: Definition for Post object
 
+Hooks
+
+- useFetchPosts: custom hook that abstracts the data fetching of posts and can be now reused in other places
+
 ## React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
